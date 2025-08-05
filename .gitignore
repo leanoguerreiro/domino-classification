@@ -1,0 +1,30 @@
+# Ambientes virtuais
+/venv
+/.venv
+/env
+/.env
+
+# Arquivos de cache e compilados do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Checkpoints do Jupyter Notebook
+.ipynb_checkpoints/
+
+# Pastas de configuração de IDEs
+.vscode/
+.idea/
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de instalação do Python
+*.egg-info/
+/dist/
+/build/
+
+# Datasets 
+data/
