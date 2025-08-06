@@ -1,6 +1,8 @@
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers, models
+from data_augmentation import get_data_augmentation
+
 
 def build_cnn_model(input_shape: tuple[int, int, int], num_classes: int) -> keras.Model:
     """
@@ -12,10 +14,16 @@ def build_cnn_model(input_shape: tuple[int, int, int], num_classes: int) -> kera
     """
     
     print('Construindo o modelo CNN...')
+     
+    img_height, img_widht, _ = input_shape
+    data_augmentation = get_data_augmentation(img_height, img_widht)
     
     # A arquitetura é um empilhamento linear de camadas convolucionais, seguidas por camadas densas.
     model = models.Sequential([
         layers.Input(shape=input_shape),
+        
+        data_augmentation, # Camada de aumento de dados para aplicar transformações aleatórias nas imagens
+        
         layers.Rescaling(1./255), # Normaliza os pixels da imagem para o intervalo [0, 1]
         
         # Camada convolucional com 32 filtros, tamanho de kernel 3x3 e ativação ReLU
