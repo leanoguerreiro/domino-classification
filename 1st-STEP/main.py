@@ -1,13 +1,17 @@
+import warnings
+
 from data_utils import load_and_process_data
 from model_builder import build_cnn_model, compile_model
 from training_utils import training_model, plot_training_history
+
+warnings.filterwarnings("ignore")
 
 if __name__ == '__main__':
     DATASET_PATH = "../data/data-raw"
     IMG_HEIGTH = 100
     IMG_WIDTH = 100
     BATCH_SIZE = 32
-    EPOCHS = 20
+    EPOCHS = 50
     
     # Carregar os dados de treinamento e validação
     train_data, val_data, class_names = load_and_process_data(
