@@ -40,7 +40,7 @@ def load_and_process_data(dataset_dir:str, img_size: tuple[int, int], batch_size
     
     # Otimiza o carregamento de dados para melhor desempenho
     autotune = tf.data.AUTOTUNE
-    train_data = train_data.cache().shuffle(1000).prefetch(BUFFER_SIZE=autotune)
-    validation_data = validation_data.cache().prefetch(BUFFER_SIZE=autotune)
+    train_data = train_data.cache().shuffle(1000).prefetch(buffer_size=autotune)
+    validation_data = validation_data.cache().prefetch(buffer_size=autotune)
     
     return train_data, validation_data
